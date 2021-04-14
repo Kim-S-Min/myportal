@@ -7,5 +7,5 @@ import com.bitacademy.myportal.vo.GuestbookVo;
 public interface GuestbookService {
 	public List<GuestbookVo> getList();
 	public boolean writeMessage(GuestbookVo vo);
-	public boolean deletemessage(GuestbookVo vo);
+	public boolean deleteMessage(GuestbookVo vo);
 }
