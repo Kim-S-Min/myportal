@@ -7,6 +7,8 @@ CREATE TABLE members (
     joindate date DEFAULT sysdate
 );
 
+ALTER TABLE members MODIFY email varchar(128) UNIQUE;
+
 CREATE SEQUENCE seq_members_pk
     START WITH 1 INCREMENT BY 1 NOCACHE;
 

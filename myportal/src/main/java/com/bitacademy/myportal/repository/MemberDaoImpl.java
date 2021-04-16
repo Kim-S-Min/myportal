@@ -24,19 +24,20 @@ public class MemberDaoImpl implements MemberDao {
 			System.err.println("예외 발생:" + e.getMessage());
 			throw new MemberDaoException("회원 가입 중 오류 발생!", vo);
 		}
-		return 0;
+		return insertedCount;
 	}
 
 	@Override
 	public MemberVo selectUser(String email, String password) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public MemberVo selectUser(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberVo vo = sqlSession.selectOne("members.selectUserByEmail", email);
+		
+		return vo;
 	}
 
 }
