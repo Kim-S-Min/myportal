@@ -9,5 +9,12 @@ CREATE TABLE members (
 
 CREATE SEQUENCE seq_members_pk
     START WITH 1 INCREMENT BY 1 NOCACHE;
+
+DESC members;
+
+INSERT INTO members (no, name, email, password, gender)
+VALUES(seq_members_pk.nextval, '홍길동', 'test@test.com', '1234', 'M');
+
+SELECT * FROM members;
     
 commit;
