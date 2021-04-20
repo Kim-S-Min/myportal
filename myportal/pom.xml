@@ -73,6 +73,7 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/com.oracle.ojdbc/ojdbc8 -->
+		<!-- Ojdbc8 -->
 		<dependency>
 		    <groupId>com.oracle.ojdbc</groupId>
 		    <artifactId>ojdbc8</artifactId>
@@ -136,6 +137,7 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+		<!-- JAXB API -->
 		<dependency>
 		    <groupId>javax.xml.bind</groupId>
 		    <artifactId>jaxb-api</artifactId>
