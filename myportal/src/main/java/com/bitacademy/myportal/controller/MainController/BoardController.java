@@ -34,7 +34,7 @@ public class BoardController {
 		List<BoardVo> list = boardServiceImpl.getList();
 		//	모델에 실어서 View로 전달
 		model.addAttribute("list", list);
-		logger.debug("게시물 목록:", list);
+		logger.debug("게시물 목록:" + list);
 		
 		return "board/list";
 	}
@@ -46,7 +46,7 @@ public class BoardController {
 		//	로그인 여부 체크
 		if (authUser == null) {
 			//	로그인 안한 사용자
-			return "redirect:/";
+			return "redirect:/board";
 		}
 		//	로그인 한 사용자 -> 작성 폼으로 포워드
 		return "board/write";
@@ -105,9 +105,9 @@ public class BoardController {
 		
 		boolean success = boardServiceImpl.update(vo);
 		
-		logger.debug("게시물 업데이트:", success);
+		logger.debug("게시물 업데이트:" + success);
 		
-		//	리스트 리다이렉트
+		//	리스트로 리다이렉트
 		return "redirect:/board";
 	}
 

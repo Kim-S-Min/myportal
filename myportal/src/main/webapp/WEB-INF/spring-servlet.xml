@@ -8,11 +8,11 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
 	<context:annotation-config />
-	<context:component-scan
+	<context:component-scan 
 		base-package="com.bitacademy.myportal.controller" />
-		
-	<!-- 스프링은 기본적으로 모든 요청을 DispatcherServlet이 처리하고
-		정적 자원 제공을 위해서는 정적자원의 처리를 
+
+	<!-- 스프링은 기본적으로 모든 요청을 DispatcherServlet이 처리
+		정적 자원 제공을 위해서는 정적 자원의 처리를
 		DefaultServlet에게 위임해야 한다 -->
 	<mvc:annotation-driven>
 		<!-- Message Converter 등록 -->
@@ -28,9 +28,10 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-	<mvc:default-servlet-handler/><!-- 정적 자원 처리 담당 -->
 	
-		<!-- View Resolver
+	<mvc:default-servlet-handler /><!-- 정적 자원 처리 담당 -->
+	
+	<!-- View Resolver
 		전달받은 ViewName을 기반으로 적절한 실제 View 객체를 찾아주는 역할 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -60,12 +61,20 @@
 		</mvc:interceptor -->
 		<!-- 인증 처리: 인터셉터 -->
 		<mvc:interceptor>
-			<mvc:mapping path="/board/**"/>
+			<mvc:mapping path="/board/**" />
 			<!-- 아래 매핑은 인터셉터 적용에서 제외 -->
-			<mvc:exclude-mapping path="/board/**"/>	<!-- /board/list 하위 요청은 적용하지 않는다 -->
-			<mvc:exclude-mapping path="/board/"/>
-			<mvc:exclude-mapping path="/board"/>
+			<mvc:exclude-mapping path="/board/list/**"/> 
+			<mvc:exclude-mapping path="/board/" />
+			<mvc:exclude-mapping path="/board" />
 			<bean class="com.bitacademy.myportal.interceptors.AuthInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	<!-- MessageSource -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<!-- 메시지 소스의 위치 -->
+		<property name="basenames" value="messages/messages_ko" />	
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
 </beans>
