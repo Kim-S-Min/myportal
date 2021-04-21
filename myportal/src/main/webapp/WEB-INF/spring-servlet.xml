@@ -85,6 +85,10 @@
 		<property name="maxUploadSize" value="10485760" />
 		<!-- 파일 인코딩 정보 -->
 		<property name="defaultEncoding" value="utf-8" />
-		
 	</bean>
+	
+	<!-- Resource Mapping -->
+	<!-- 실제요청 url과 실제디렉터리를 매핑(연결) -->
+	<mvc:resources mapping="/upload-images/**"
+		location="file:D:/upload/" />
 </beans>
